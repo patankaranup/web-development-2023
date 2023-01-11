@@ -1,0 +1,16 @@
+console.log("Hello World");
+var my_name = "Anup";
+console.log("Hello i am " + my_name);
+// window.alert(my_name);
+console.log(my_name.length);
+console.log(240 - my_name.length);
+console.log(my_name.slice(0, 3));
+console.log(my_name.toUpperCase());
+console.log("Mathematics");
+console.log(3 * 4);
+console.log(3 / 4);
+console.log(3 % 4);
+console.log(3 + 4);
+console.log(3 - 4);
+var x = 3;
+console.log(++x);
