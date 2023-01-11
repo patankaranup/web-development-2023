@@ -1,0 +1,15 @@
+body{
+    background-color: aqua;
+}
+.big{
+    font-size: 10rem;
+    color: yellow;
+    font-family: cursive;
+}
+.margin_50 {
+    margin: 50px;
+}
+h2{
+    font-family: cursive;
+    font-size: 5rem;
+}

@@ -1,0 +1,1 @@
+1. www.minifier.org for minifying css and js code
