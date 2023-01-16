@@ -1,0 +1,26 @@
+1. Cassandra
+2. MongoDb
+3. CouchDB
+4. Redis
+5. Riak
+6. HBase
+7. CouchBase
+8. OrientDB
+9. Aerospike
+10. Neo4j
+11. HyperTable
+12. Elastic Search
+13. Accumulo
+14. VoltDb
+15. Scalaris
+16. RethinkDB
+
+Sql DataBases -> MySQL, PostGreSQl 
+Table structure, 
+requires schema,
+Scales vertically
+NoSql DataBases -> mongoDB, redis 
+Document structure, 
+flexible,
+Scales horizontally
+
