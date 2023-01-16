@@ -1,0 +1,1 @@
+download and extract files and move it to usr/local/mongodb
