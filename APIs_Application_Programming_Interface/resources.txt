@@ -1,0 +1,14 @@
+1. open weather api 
+2. uks police api for crime (data.police.uk)
+3. financial modelling prep api 
+4. poke api 
+5. https://sv443.net/jokeapi/v2/ Joke api 
+
+api endpoints paths/routes parameters
+paths are routes which are already known 
+
+----endpoint-----------|--path-|-----parameters-----
+https://apiendpoint.com/apitype?content=10&length=25
+
+
+API Authentication 
