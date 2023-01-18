@@ -1,1 +1,3 @@
-download and extract files and move it to usr/local/mongodb
+On terminal : mongod 
+On new tab : mongo 
+

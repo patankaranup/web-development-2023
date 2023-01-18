@@ -1,0 +1,129 @@
+1. show dbs (show database)
+2. use ShopDB (create new database)
+3. db (for name of current db)
+
+// create and insert in collection 
+db.products.insertOne(
+    {
+        _id : 1,
+        name : "Iphone",
+        price : 1200,
+    }
+)
+
+// list outs all collections 
+show collections 
+
+db.products.insertMany(
+    {
+        _id : 2,
+        name : "Macbook-Air",
+        price : 2000,
+    },
+    {
+        _id : 3,
+        name : "Macbook-Pro",
+        price : 3000,
+    },
+)
+
+
+// read from collections 
+db.products.find()
+
+// query database
+db.products.find(
+    {
+        name : "Iphone"
+    }
+)
+
+db.products.find(
+    {
+        price : {$gt: 2000}
+    }
+)
+// first object is query and seconds is projection that is what we want to retrieve from it 1 is true and 0 is false 
+db.products.find(
+    {
+        price : 2000
+    },
+    {
+        name : 1
+    }
+)
+
+// update value in the db id is the filter criteria and update value is in set field 
+db.products.updateOne(
+    {
+        _id : 1
+    },
+    {
+        $set : {stock : 32}
+    }
+)
+db.products.updateOne(
+    {
+        _id : 2
+    },
+    {
+        $set : {stock : 12}
+    }
+)
+
+
+// delete in the db 
+db.products.deleteOne(
+    {
+        _id : 2
+    }
+)
+
+
+// establish relationship in mongodb 
+// one to many realtioship one product to many reviews 
+db.products.insertOne(
+    {
+        _id : 3,
+        name : "Ipad",
+        price : 2000,
+        stock : 45,
+        reviews : [
+            {
+                authorName : "abc",
+                rating : 5,
+                reviews : "Best in performance"
+            },
+            {
+                authorName : "xyz",
+                rating : 5,
+                reviews : "Best in speed"
+            }
+        ]
+    }
+)
+
+db.products.insertOne(
+    {
+        _id : 4,
+        name : "Apple Watch",
+        price : 1500,
+        stock : 54,
+        reviews : [
+            {
+                authorName : "abc",
+                rating : 5,
+                reviews : "Best waterproof watch"
+            },
+            {
+                authorName : "xyz",
+                rating : 5,
+                reviews : "Best in speed"
+            }
+        ]
+    }
+)
+
+// integrating mongodb 
+
+2 options - mongodb native driver or ODM (Mongoose)
