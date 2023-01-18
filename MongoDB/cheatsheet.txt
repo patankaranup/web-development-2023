@@ -127,3 +127,30 @@ db.products.insertOne(
 // integrating mongodb 
 
 2 options - mongodb native driver or ODM (Mongoose)
+
+
+
+
+
+
+db.products.insertOne(
+    {
+        _id:2,
+        name:"Pencil",
+        price:0.80,
+        stock:12,
+        reviews:[
+            {
+                customerName:"def",
+                rating : 5,
+                review : "Fantastic"
+            },
+            {
+                customerName:"xyz",
+                rating : 4.8,
+                review : "Awesome"
+            }
+
+        ]
+    }
+)
