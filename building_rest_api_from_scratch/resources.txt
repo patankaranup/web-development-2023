@@ -1,0 +1,9 @@
+API Types (Architecture)
+GraphQL
+SOAP 
+REST
+FALCOR
+
+
+Database
+Robo3T (MongoDB GUI)
