@@ -2,6 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
+const md5 = require('md5');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const mongoose = require('mongoose');
 // Level 2 using Encryption
 var encrypt = require('mongoose-encryption');
@@ -18,8 +22,8 @@ const userSchema = new mongoose.Schema({
 });
 
 // mongoose encryption LEVEL 2 using Encryption
-const secret = process.env.SECRET;
-userSchema.plugin(encrypt, { secret: secret ,encryptedFields: ['password'] })
+// const secret = process.env.SECRET;
+// userSchema.plugin(encrypt, { secret: secret ,encryptedFields: ['password'] })
 
 
 // user model
@@ -47,21 +51,29 @@ app.get('/register',function(req,res){
 });
 // register route
 app.post('/register',function(req,res){
-    const newUser = User({
-        email:req.body.username,
-        password:req.body.password
+    // LEVEL 4 Security using Salting and Hashing
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+        // Store hash in your password DB.
+        const newUser = User({
+            email:req.body.username,
+            // password: md5(req.body.password) // LEVEL 3 Security using hashing algorithm md5
+            password:hash
+        });
+        newUser.save(function(err){
+            if (err){
+                console.log(err);
+            } else {
+                res.render('secrets');
+            }
+        });  
     });
-    newUser.save(function(err){
-        if (err){
-            console.log(err);
-        } else {
-            res.render('secrets');
-        }
-    });    
+
+      
 });
 // login route 
 app.post('/login',function(req,res){
     const username = req.body.username;
+    // const password = md5(req.body.password);
     const password = req.body.password;
     User.findOne({
         email:username
@@ -71,9 +83,14 @@ app.post('/login',function(req,res){
             console.log(err);
         } else{
             if(foundUser){
-                if(foundUser.password === password){
-                    res.render('secrets');
-                }
+                // if(foundUser.password === password){
+                //     res.render('secrets');
+                // }
+                bcrypt.compare(password, foundUser.password, function(err, result) {
+                    if(result=== true){
+                        res.render("secrets");
+                    }
+                });
             }
         }
     });
